@@ -21,8 +21,8 @@ public class Request {
     }
 
     public static void drawMenu() {
-        drawMenu("1. Throw a dice\n" +
-                "2. Throw five random dices \n" +
+        drawMenu("1. Roll a dice as many times as you want \n" +
+                "2. Roll two dice as many times as you want, show the highest value and its position \n" +
                 "3. Exit \n");
     }
 

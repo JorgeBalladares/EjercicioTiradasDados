@@ -59,36 +59,29 @@ public class Dice {
         int throwsDices = Integer.parseInt(Request.requestValue("Insert number of repetition to throw two dices: "));
         int[] result_1 = new int[throwsDices];
         int[] result_2 = new int[throwsDices];
-        for (int i = 0; i < throwsDices; i++){
-            int throwDice = (int)(Math.random()*6 + 1);
-            result_1[i] = throwDice;
-        }
-        for (int i = 0; i < throwsDices; i++){
-            int throwDice = (int)(Math.random()*6 + 1);
-            result_2[i] = throwDice;
-        }
+        int tirada = 0;
+
 
         int [][] result = new int[2][throwsDices];
-        for (int i = 0; i < throwsDices; i++){
-            for (int j = 0; j < throwsDices; j++){
-                if(result[0][j] == 0 ){
-                    result[0][j] = result_1[j];
-                }
-                if(result[1][j] == 0 ){
-                    result[1][j] = result_2[j];
-                }
-            }
-        }
+        int sumaAlta = 0;
+        for (int j = 0; j < throwsDices; j++){
+            int throwDice1 = (int)(Math.random()*6 + 1);
+            int throwDice2 = (int)(Math.random()*6 + 1);
 
-        int value = 0;
-        for (int i = 0; i < 2; i++){
-            for (int j = 0; j < throwsDices; j++){
-                if(value<result[i][j]){
-                    value = result[i][j];
-                }
+            if(result[0][j] == 0 ){
+                result[0][j] = throwDice1;
             }
+            if(result[1][j] == 0 ){
+                result[1][j] = throwDice2;
+            }
+
+            if (sumaAlta<(throwDice1+throwDice2)){
+                sumaAlta = throwDice1+throwDice2;
+                tirada = j+1;
+            }
+
         }
-        System.out.println(Arrays.deepToString(result));
-        System.out.println("the maximum value is: " + value);
+        System.out.println("\n"+Arrays.deepToString(result));
+        System.out.println("The best throw have been: " +sumaAlta+ " in the position " +tirada+ "\n");
     }
 }
